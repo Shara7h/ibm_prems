@@ -40,24 +40,24 @@ export function Navbar() {
       <div className="flex items-center gap-3">
 
         {/* Notifications */}
-        <div className="relative">
+        {/* Notifications */}
+<div className="relative">
+  <button
+    onClick={() => setShowNotifications(!showNotifications)}
+    className="relative flex items-center justify-center w-9 h-9 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition"
+  >
+    <Bell className="h-4 w-4" />
+    <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary" />
+  </button>
 
-          <button
-            onClick={() => setShowNotifications(!showNotifications)}
-            className="relative flex items-center justify-center w-9 h-9 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition"
-          >
-            <Bell className="h-4 w-4" />
+  {showNotifications && (
+    <div className="fixed top-14 right-4 z-50">
+      {/* Adjust `top` to be below navbar height */}
+      <NotificationPanel onClose={() => setShowNotifications(false)} />
+    </div>
+  )}
+</div>
 
-            <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary" />
-          </button>
-
-          {showNotifications && (
-            <div className="absolute right-0 mt-2">
-              <NotificationPanel onClose={() => setShowNotifications(false)} />
-            </div>
-          )}
-
-        </div>
 
       </div>
 
